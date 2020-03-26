@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
 
 
 mongoose.connect('mongodb+srv://admin:'+process.env.MONGO_ATLAS_PW+'@node-rest-shop-rkyk0.mongodb.net/test?retryWrites=true&w=majority',
-{ useNewUrlParser: true,useUnifiedTopology: true })
+{ useNewUrlParser: true,useUnifiedTopology: true });
+
+mongoose.Promise = global.Promise;
 
 // use the logger middleware and body-parser  (execute between the req and res)
 app.use(morgan('dev'));

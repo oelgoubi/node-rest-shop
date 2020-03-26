@@ -55,3 +55,17 @@ Product.find().where()
     }
 
 ]
+
+
+/// FOR THE Queries like finbyid()
+you need to use .exec() function to get .then() and .catch 
+
+
+// contrainte 
+  store orders of products that don'y actually exist in the DB
+{
+    
+    	"quantity": 2,
+       "productId": "5e7bf9ec7097215f04e36a5b"
+
+    }

@@ -2,4 +2,56 @@ installing : express
 
 // Tip :
 Using postman to simulate different requests 
+--save-dev 
 
+npm start  // "start" :"nodemon start"
+
+
+/// package to log the requests of the client : morgan
+
+const morgan = require('morgan'); // log the req to the console 
+
+
+/// parse the request using the body-parser (supports JSON DATA , URLEncoded)
+
+
+// cors : security mechanism that don't allow the client (browser) to acces 
+resources from different server (origin) than the server that sent him the respone
+
+/ append the response header to avoid cors erros
+app.use((req,res,next)=>{
+    // give acces to any client
+   res.header('Access-Control-Allow-Origin','*');
+   res.header('Access-Control-Allow-Header','Origin, X-Requested-With,Content-Type,Accept,Authorization');
+   // browsers always send an Option req before sending post req or delete ,put 
+   if(req.method === 'OPTIONS')
+   {
+       // all the req we wan want to support with our API
+       res.header('Access-Control-Allow-Methods','PUT,DELETE,PATCH,GET,POST');
+       // return bcz the Option req is just to find out the type of req
+       return res.status(200).json({});
+
+   }
+   next();
+})
+ // but still we can acces with a tool like postman
+
+
+ // mongodbA Atlas : mongo DB in the cloud
+
+process.env.MONGO_ATLAS_PW  set the pwd on the server where we will depoloy the app
+
+// mongoose works with Models and schemas
+
+Product.find().where()
+
+
+// to updata data 
+
+[
+    {
+    	"propName":"price",
+    	"value":"170"
+    }
+
+]

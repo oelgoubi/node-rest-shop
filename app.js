@@ -39,12 +39,14 @@ app.use((req,res,next)=>{
 // Set up Forwardars
 const productRoutes= require('./api/routes/products');
 const ordersRoutes= require('./api/routes/orders');
+const usersRouters = require('./api/routes/user');
 
 
 
 // app.use() method called middleware--> an incoming req has to through app.use  next to move the req to another middleware
 app.use('/products',productRoutes);
 app.use('/orders',ordersRoutes);
+app.use('/user',usersRouters);
 
 // handle errors 
 

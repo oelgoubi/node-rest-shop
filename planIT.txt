@@ -98,3 +98,30 @@ because we don't set a route so this folder is not publicly accesible
 
 2 sol : -- set up a route /uploads 
 or MAKE the folder upload publicly available app.static
+
+
+///// AUThentification
+install the packege to encrypt the pwd  (hashing library)
+$ npm install bcrypt --save  
+bcrypt.hash(pwd,salt)
+salt means :
+You can't reverse a hash / translate it to plain text value
+hash : random string --> google it you may find a translation for the plaintext pwd 
+
+bcz every plaintext string has his unique hashed version with the hashing algo using here 
+--- Dictionary Tables : plainText Value -- hash Value
+so if someone git the hashcode for a word 'icecream' easy pwd 
+he still can access it from the DB 
+
+Salting the pwd means adding random strings before hashing it -->
+googling the hash won't lead to the plain textversion --> number of salting rounds
+
+{
+  _id: 5e7d53e8a04c81757849ddfd,
+  email: 'othmanelgoubi@gmail.ma',
+  password: '$2b$10$/cvLEx1ju7UAQNRwL0/96O95N1UldO1MpuZ8vw0GSeMFSc5Kzk4t6',
+  __v: 0
+}
+
+
+// CHECK if the user exist before creating a new user 

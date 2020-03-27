@@ -125,3 +125,34 @@ googling the hash won't lead to the plain textversion --> number of salting roun
 
 
 // CHECK if the user exist before creating a new user 
+
+// link to -- regular expression -- email matching format
+https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+
+
+//////// cREATE TOKEN JWT JASON WEB TOKEN 
+
+AUThentification failed msg : let the user not know if the email or the pwd is incorrect
+
+// generate the jason web token using the library jsonwebtoken
+add  private key
+
+
+/// https://jwt.io/
+
+we copy paste  token we got 
+to go decoding in the website above and we can know the informations like payload
+decoding : checking is it's valid for base 64
+//// protect routes (resources)
+
+the plan is : add a midlleware to check is the user 
+can continue accesing another route 
+// handlers executed from the left to the right
+router.get('/',hanlder1,handler2,handler3)
+
+
+// we send the token in the header of the req 
+not the body using the key Authentification
+
+Bearer : token value 
+Bearer is a convention to indicate Authorization - alternative of basic http Authentification

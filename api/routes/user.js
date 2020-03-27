@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router(); 
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 const User = require('../models/user');
 
-
-// create new user
+// prevent the user from creating an account using an existing email address
+// create new user or register 
 router.post('/signup',(req,res,next)=>
 { 
-    User.find({email:req.body.email}) // it return an array of users 
+    User.find({email:req.body.email}) // find() return an array of users 
     .exec()
     .then(user=>{
         if(user.length>=1)   // check if the array is empty 
@@ -54,6 +55,79 @@ router.post('/signup',(req,res,next)=>
   
       
 });
+
+// login
+
+router.post('/login',(req,res,next)=>{
+    // check if the user exist 
+    User.findOne({email:req.body.email})
+    .exec()
+    .then((user=>{
+        if(!user)
+        {
+            res.status(404).json({
+
+                message:`Authentification failed .`,
+                request :{
+                    type : 'POST',
+                    url : 'http://localhost:3000/user/signup'
+            
+                }
+                });
+        }else
+        {
+            // result is true if the pass is correct --> compare the user in the DB and the passed pwd
+           bcrypt.compare(req.body.password,user.password,(err,result)=>{
+               if(err)
+               {
+                   res.status(404).json({
+                        message:`Authentification failed .`
+                   });
+                }
+               if(result)
+               {  // generate a jwt
+                 // synchroneous version
+               const token =  jwt.sign({_id:user._id,email:user.email},
+                                        process.env.JWT_KEY,
+                                        {expiresIn :"1h"});
+
+                   return res.status(200).json({
+                       message:'Auth successful',
+                       token : token
+                   });
+               }
+
+               res.status(404).json({
+                  message:`Authentification failed .`
+                 });
+             })
+
+        }
+
+    }))
+    .catch(err=>{
+        res.status(500).json({
+         error:err
+        })
+    })
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 router.delete('/:userId',(req,res,next)=>{

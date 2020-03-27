@@ -69,3 +69,32 @@ you need to use .exec() function to get .then() and .catch
        "productId": "5e7bf9ec7097215f04e36a5b"
 
     }
+
+
+
+
+///// populating Queries with mongoose
+bringig the infos of a a row of another collection and insert it inside 
+another row ---> relation between tables
+
+instead of just having the id of a an object inside another object
+we bring the whole object
+
+
+/////////////// uploading images of our products:
+
+Posting a product with an image : is binary image it can't be parsed by our body-parser
+
+// CLASSIC approch : with our body-parser plug-in
+we can pase the urlencoed(the url) and json objects(foming from a form for example)
+
+// an alternative parser called multer 
+"multer": "^1.4.2"  can handle formData like files ( upload an image )
+
+///// 
+
+http://localhost:3000/uploads/1585267076328-example.png  is not accebile 
+because we don't set a route so this folder is not publicly accesible 
+
+2 sol : -- set up a route /uploads 
+or MAKE the folder upload publicly available app.static

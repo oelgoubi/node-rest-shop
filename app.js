@@ -12,6 +12,7 @@ mongoose.Promise = global.Promise;
 
 // use the logger middleware and body-parser  (execute between the req and res)
 app.use(morgan('dev'));
+app.use('/uploads',express.static('uploads')); // serve files from this folder
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());// extract json data 
 

@@ -156,3 +156,7 @@ not the body using the key Authentification
 
 Bearer : token value 
 Bearer is a convention to indicate Authorization - alternative of basic http Authentification
+
+
+
+//// Adding a view in order to make the MVC approch clear 

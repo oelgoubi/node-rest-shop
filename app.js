@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://admin:'+process.env.MONGO_ATLAS_PW+'@node-rest-shop-rkyk0.mongodb.net/test?retryWrites=true&w=majority',
 { useNewUrlParser: true,useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
 
 mongoose.Promise = global.Promise;
 

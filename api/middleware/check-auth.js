@@ -14,7 +14,7 @@ module.exports = (req,res,next)=>
     }catch(err){
         // unauthentificated : 401
        return res.status(401).json({
-            message : 'Auth Failed'
+            message : 'Not Authorized'
         })
     }
 

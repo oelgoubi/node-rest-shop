@@ -32,7 +32,7 @@ const upload = multer({ storage: storage,limits : {fileSize:1024*1024*5},
 fileFilter:fileFilter}); 
 
 
-router.get('/',ProductController.products_get_all);
+router.get('/',checkAuth,ProductController.products_get_all);
 
 // express will automatically add req,res,next to the checkAuth-->
 // the body-parser that return form data should be done in the beggining

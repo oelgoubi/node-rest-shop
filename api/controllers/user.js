@@ -84,7 +84,7 @@ exports.user_logIn = (req,res,next)=>{
                {  // generate a jwt
                  // synchroneous version
                const token =  jwt.sign({_id:user._id,email:user.email},
-                                        process.env.JWT_KEY,
+                                        "secretOrPrivateKey",
                                         {expiresIn :"1h"});
 
                    return res.status(200).json({
